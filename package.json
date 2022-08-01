@@ -32,14 +32,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:write": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix --quiet",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -53,6 +48,20 @@
       "last 1 safari version"
     ]
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended",
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ]
+  },
+  "prettier": {
+    "prettier.useTabs": true,
+    "prettier.printWidth": 100
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -60,8 +69,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "yarn prettier",
-      "yarn lint",
+      "yarn prettier --write",
+      "yarn lint --fix",
       "git add"
     ]
   },
