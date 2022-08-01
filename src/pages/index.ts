@@ -1,2 +1,2 @@
-export { default as Converter } from "./Converter/Converter";
-export { default as Currencies } from "./Currencies/Currencies";
+export { default as Converter } from "./Converter";
+export { default as Currencies } from "./Currencies";

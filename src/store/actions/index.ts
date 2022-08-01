@@ -1,7 +1,7 @@
-import * as ConverterActionCreators from "./converterAction";
-import * as CurrenciesActionCreators from "./currenciesAction";
+import * as converterActionCreators from "./converterAction";
+import * as currenciesActionCreators from "./currenciesAction";
 
 export default {
-	...ConverterActionCreators,
-	...CurrenciesActionCreators,
+	...converterActionCreators,
+	...currenciesActionCreators,
 };

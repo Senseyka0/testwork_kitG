@@ -1,9 +1,3 @@
-export enum ConverterConstants {
-	fetching = "converter fetching",
-	success = "converter success",
-	error = "converter error",
-}
-
 export interface ConverterState {
 	from: string;
 	to: string;
@@ -12,17 +6,3 @@ export interface ConverterState {
 	error: string | null;
 	result: number | null;
 }
-
-interface FetchingAction {
-	type: ConverterConstants.fetching;
-}
-interface SuccessAction {
-	type: ConverterConstants.success;
-	payload: { result: number; from: string; to: string; amount: number };
-}
-interface ErrorAction {
-	type: ConverterConstants.error;
-	payload: string;
-}
-
-export type ConverterAction = FetchingAction | SuccessAction | ErrorAction;

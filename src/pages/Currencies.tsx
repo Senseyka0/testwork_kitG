@@ -2,12 +2,12 @@
 import { useEffect, useState } from "react";
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
 
-import { useActions, useTypedSelector } from "../../hooks";
+import { useActions, useTypedSelector } from "../hooks";
 
-import { DEFAULT_CURRENCY } from "../../constants";
+import { DEFAULT_CURRENCY } from "../constants";
 
 const Currencies = () => {
-	const { symbols, currencies, isLoading } = useTypedSelector((state) => state.currencies);
+	const { symbols, currencies, isLoading, error } = useTypedSelector((state) => state.currencies);
 
 	const { fetchSymbols, fetchCurrencies } = useActions();
 
@@ -40,6 +40,8 @@ const Currencies = () => {
 							</MenuItem>
 						))}
 					</Select>
+
+					{error && <p className="converter-error">{error}</p>}
 
 					<div className="currencies-items">
 						{currencies.map((currency) => (

@@ -1,56 +1,45 @@
 import { AppDispatch } from "..";
 
-import { getCurrencies, getSymbols } from "../../api/exchanges";
-import { convertCurrencyValue } from "../../utils";
+import exchangesApi from "../../api/exchanges";
 
-import { CurrenciesConstants } from "../types/currenciesType";
+import { currenciesFetching, currenciesSuccess, symbolsSuccess } from "../slices/currenciesSlice";
+
+import { convertCurrencyValue } from "../../utils";
 
 export const fetchSymbols = () => {
 	return async (dispatch: AppDispatch) => {
-		dispatch({ type: CurrenciesConstants.fetching });
+		dispatch(currenciesFetching());
 
 		try {
-			const { symbols } = await getSymbols();
+			const { symbols } = await exchangesApi.getSymbols();
 
 			// keys are symbols, values are name
 			const payload = Object.keys(symbols);
 
-			dispatch({
-				type: CurrenciesConstants.symbolsSuccess,
-				payload,
-			});
+			dispatch(symbolsSuccess(payload));
 		} catch (error) {
-			dispatch({
-				type: CurrenciesConstants.error,
-				// @ts-ignore
-				payload: error.response.data.error.message,
-			});
+			// @ts-ignore
+			dispatch(currenciesError(error.response.data.error.message));
 		}
 	};
 };
 
 export const fetchCurrencies = (currency: string) => {
 	return async (dispatch: AppDispatch) => {
-		dispatch({ type: CurrenciesConstants.fetching });
+		dispatch(currenciesFetching());
 
 		try {
-			const { rates } = await getCurrencies(currency);
+			const { rates } = await exchangesApi.getCurrencies(currency);
 
 			const payload = Object.keys(rates).map((key) => ({
 				key,
 				value: convertCurrencyValue(rates[key]),
 			}));
 
-			dispatch({
-				type: CurrenciesConstants.currenciesSuccess,
-				payload,
-			});
+			dispatch(currenciesSuccess(payload));
 		} catch (error) {
-			dispatch({
-				type: CurrenciesConstants.error,
-				// @ts-ignore
-				payload: error.response.data.error.message,
-			});
+			// @ts-ignore
+			dispatch(currenciesError(error.response.data.error.message));
 		}
 	};
 };

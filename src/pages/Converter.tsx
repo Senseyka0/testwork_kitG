@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { Input } from "@mui/material";
 
-import { useActions, useTypedSelector } from "../../hooks";
+import { useActions, useTypedSelector } from "../hooks";
 
 const Converter = () => {
 	const { fetchConvert } = useActions();
