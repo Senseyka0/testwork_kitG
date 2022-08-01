@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
 

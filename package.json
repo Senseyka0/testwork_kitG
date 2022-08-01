@@ -33,8 +33,9 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
-		"lint:write": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix --quiet",
-		"prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
+		"lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix --quiet",
+		"prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+		"prepare": "husky install"
 	},
 	"browserslist": {
 		"production": [
@@ -48,32 +49,30 @@
 			"last 1 safari version"
 		]
 	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest",
-			"plugin:@typescript-eslint/recommended",
-			"plugin:prettier/recommended",
-			"eslint:recommended",
-			"plugin:react/recommended"
-		]
-	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
 		}
 	},
 	"lint-staged": {
-		"*.+(js|jsx|ts|tsx)": "eslint --fix"
+		"*.{js,jsx,ts,tsx}": [
+			"yarn prettier --write",
+			"yarn lint --fix",
+			"git add"
+		]
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^5.31.0",
 		"@typescript-eslint/parser": "^5.31.0",
-		"eslint": "^8.21.0",
+		"eslint": "^7.32.0 || ^8.2.0",
+		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-import": "^2.25.3",
+		"eslint-plugin-jsx-a11y": "^6.5.1",
 		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-react": "^7.30.1",
-		"husky": "^8.0.1",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"husky": "^8.0.0",
 		"lint-staged": "^13.0.3",
 		"prettier": "^2.7.1"
 	}
