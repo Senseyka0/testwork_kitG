@@ -16,3 +16,20 @@ export interface IConvert {
 	date: string;
 	result: number;
 }
+
+export interface ISymbolResponse {
+	success: boolean;
+	symbols: ISymbol;
+}
+
+export interface ISymbol {
+	[key: string]: number;
+}
+
+export interface ICurrency {
+	base: string;
+	date: string;
+	rates: ISymbol;
+	success: boolean;
+	timestamp: number;
+}

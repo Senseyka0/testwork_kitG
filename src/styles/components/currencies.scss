@@ -1,0 +1,10 @@
+.currencies-items {
+  margin-top: 40px;
+  
+}
+
+.currencies-item {
+  & > span {
+    font-weight: bold;
+  }
+}

@@ -1,8 +1,11 @@
 import { AppDispatch } from "..";
+
 import { convertCurrency } from "../../api/exchanges";
 
 import { ConvertQuery } from "../../models/exchanges";
 import { ConverterConstants } from "../types/converterType";
+
+import { convertCurrencyValue } from "../../utils";
 
 export const fetchConvert = (payload: ConvertQuery) => {
 	return async (dispatch: AppDispatch) => {
@@ -13,7 +16,12 @@ export const fetchConvert = (payload: ConvertQuery) => {
 
 			dispatch({
 				type: ConverterConstants.success,
-				payload: { result, amount: query.amount, from: query.from, to: query.to },
+				payload: {
+					result: convertCurrencyValue(result),
+					amount: query.amount,
+					from: query.from,
+					to: query.to,
+				},
 			});
 		} catch (error) {
 			dispatch({

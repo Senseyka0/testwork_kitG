@@ -1,7 +1,7 @@
 export enum ConverterConstants {
-	fetching = "fetching",
-	success = "success",
-	error = "error",
+	fetching = "converter fetching",
+	success = "converter success",
+	error = "converter error",
 }
 
 export interface ConverterState {
