@@ -4,7 +4,7 @@ import { ROUTES } from "../constants/routes";
 
 import { ContentLayout } from "../layouts";
 import { Converter, Currencies } from "../pages";
-import { Header } from "./";
+import { Header } from ".";
 
 const App = () => (
 	<>

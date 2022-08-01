@@ -4,7 +4,9 @@
         "es2021": true
     },
     "extends": [
-        "plugin:react/recommended",
+        "airbnb-typescript",
+        "airbnb/hooks",
+        "plugin:@typescript-eslint/recommended",
         "plugin:import/typescript",
         "plugin:prettier/recommended"
 
@@ -21,9 +23,17 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "import"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off"
+        "linebreak-style": "off",
+        "react-hooks/rules-of-hooks": "off",
+        "@typescript-eslint/no-explicit-any": ["off"],
+        "react-hooks/exhaustive-deps": ["warn"],
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["off"],
+        "@typescript-eslint/default-param-last": ["off"],
+        "@typescript-eslint/ban-ts-comment": ["off"]
     }
 }

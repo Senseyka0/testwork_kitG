@@ -14,7 +14,9 @@
 		"@types/react": "^18.0.0",
 		"@types/react-dom": "^18.0.0",
 		"axios": "^0.27.2",
+		"eslint-config-airbnb-typescript": "^17.0.0",
 		"node-sass": "^7.0.1",
+		"prettier": "^2.7.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-redux": "^8.0.2",
@@ -49,16 +51,10 @@
 			"last 1 safari version"
 		]
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": [
-			"yarn prettier --write",
-			"yarn lint --fix",
-			"git add"
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
 		]
 	},
 	"devDependencies": {
@@ -71,9 +67,8 @@
 		"eslint-plugin-jsx-a11y": "^6.5.1",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.28.0",
-		"eslint-plugin-react-hooks": "^4.3.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
 		"husky": "^8.0.0",
-		"lint-staged": "^13.0.3",
-		"prettier": "^2.7.1"
+		"lint-staged": "^13.0.3"
 	}
 }
